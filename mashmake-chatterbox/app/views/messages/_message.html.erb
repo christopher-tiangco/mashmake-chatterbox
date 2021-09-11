@@ -1,0 +1,12 @@
+<div class="event">
+    <div class="content">
+        <div class="summary messageSummary" >
+            <div class="messageGravatar">
+                <%= gravatar_for(message.user.username, {size: 30}) %>
+            </div>
+            <div class="messageBody">
+                <em><%= message.user.name %></em>: <%= message.body %>
+            </div>
+        </div>
+    </div>
+</div>

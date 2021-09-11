@@ -1,0 +1,31 @@
+@import 'semantic-ui';
+
+body {
+  background-color: #5d5959;
+}
+
+.chatbox {
+    height: 450px;
+}
+
+#messages {
+  height: 15em;
+  overflow: auto;
+}
+
+img { /* This is because semantic-ui puts a default height of 10em on any image tags I use */
+  height: auto!important;
+}
+
+.messageBody {
+  margin-top: 0.9em;
+}
+
+.messageGravatar {
+  float: left; 
+  padding-right: 0.3em;
+}
+
+.messageSummary {
+  padding-top: 1em
+}

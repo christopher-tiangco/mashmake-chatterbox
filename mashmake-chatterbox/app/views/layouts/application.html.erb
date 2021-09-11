@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatterbox by Mashmake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <%= favicon_link_tag %>
+    
+  </head>
+
+  <body>
+    <% if @loginScreen || @signupScreen %>
+      <div class="ui container">
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= render 'layouts/navigation' %>
+      <div class="ui container">
+        <%= yield %>
+      </div>
+    <% end %>
+  </body>
+</html>

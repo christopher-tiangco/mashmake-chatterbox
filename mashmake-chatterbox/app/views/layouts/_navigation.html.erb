@@ -1,0 +1,12 @@
+<div class="ui stackable inverted menu">
+    <%= link_to image_tag("/assets/mashmake.png", style: "width: 100%"), chatroom_path, class: "item" %>
+    <div class="right menu">
+        <div class="ui dropdown item">
+            <%= current_user.name %> <i class="dropdown icon"></i>
+            <div class="menu">
+                <%= link_to 'My Profile', edit_user_path(current_user), class: "item" %>
+                <%= link_to 'Logout', logout_path, class: "item" %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<% 
+    formClass = "ui large form"
+    if flash[:alert]
+        formClass += " error"
+        messageClass = "ui error message"
+    elsif flash[:notice]
+        formClass += " success"
+        messageClass = "ui success message"
+    end
+%>
+
+<%= form_with(model: @user, class: formClass, local: true) do |form| %>
+  <div class="ui stacked segment">
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <%= form.text_field :name, autofocus: true, placeholder: "your name" %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="envelope icon"></i>
+        <%= form.text_field :username, placeholder: "your email" %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="lock icon"></i>
+        <%= form.password_field :password, placeholder: "*************" %>
+      </div>
+    </div>
+    <button class="ui fluid large violet button"><%= @user.new_record? ? 'Sign up' : 'Update' %></button>
+  </div>
+  <div class="<%= messageClass %>" style="text-align: left">
+      <% if flash[:alert] && flash[:alert]['messages'] %>
+          <ul>
+          <% flash[:alert]['messages'].each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+          </ul>
+      <% elsif flash[:notice] %>
+          <p><%= flash[:notice] %></p>
+      <% end %>
+  </div>
+<% end %>

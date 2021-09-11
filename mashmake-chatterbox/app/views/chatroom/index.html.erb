@@ -1,0 +1,40 @@
+<div class="ui stackable two column grid">
+    <div class="four wide column">
+        <h2 class="ui icon inverted header">
+            <i class="circular inverted comments outline icon"></i>
+            <div class="content">
+                Chatterbox
+            </div>
+        </h2>
+        <div class="content">
+            <div class="ui inverted vertical menu">
+                <a class="item">
+                    #Home
+                </a>
+                <a class="item">
+                    #Channel1
+                </a>
+                <a class="item">
+                    #Channel2
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="twelve wide column">
+        <div class="ui fluid raised card chatbox">
+            <div class="content chatbox" id="messages">
+                <div class="ui small feed" id="message-container">
+                    <%= render @messages %>
+                </div>
+            </div>
+            <div class="extra content">
+                <%= form_with(model: @message, class: "ui reply form", url: messages_path, method: :post) do |form| %>
+                    <div class="ui fluid icon input">
+                        <%= form.text_field :body, placeholder: "blah blah blah..." %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+

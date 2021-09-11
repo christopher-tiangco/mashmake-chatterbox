@@ -1,0 +1,52 @@
+<div class="ui middle aligned center aligned grid">
+  <div class="column" style="margin-top: 100px; max-width: 450px">
+    
+    <h2 class="ui image">
+      <img src="assets/mashmake.png">
+    </h2>
+    
+    <% 
+      formClass = "ui large form"
+      messageClass = ""
+      loginMessage = ""
+      
+      if flash[:notice]
+        formClass += " success"
+        messageClass = "ui success message"
+        loginMessage = flash[:notice]
+      elsif flash[:alert]
+        formClass += " error"
+        messageClass = "ui error message"
+        loginMessage = flash[:alert]
+      end
+      
+    %>
+    
+    <%= form_with(scope: :session, url: login_path, class: formClass, local: true) do |form| %>
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <%= form.text_field :username, autofocus: true, placeholder: "Email address" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= form.password_field :password, placeholder: "Password" %>
+          </div>
+        </div>
+        <button class="ui fluid large violet button">Login</button>
+      </div>
+
+      <div class="<%= messageClass %>">
+        <p><b><%= loginMessage %></b></p>
+      </div>
+    <% end %>
+
+    <div class="ui message">
+      <%= link_to 'Create new account', new_user_path %>
+    </div>
+    
+  </div>
+</div>
